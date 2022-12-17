@@ -1,17 +1,7 @@
-const fs = require('fs')
-const path = require('path')
-const { assignDates } = require('./helpers/utils')
+const { compileDates } = require('./helpers/utils.js')
+const { dateData } = require('./helpers/dates.js')
 
-const dataFile = 'dates.json'
-const DATA_PATH = path.join(__dirname, `./helpers/${dataFile}`)
-
-const getAllDates = () => {
-  const data = fs.readFileSync(DATA_PATH, 'utf-8')
-  const collection = data.trim().length > 0 ? JSON.parse(data) : []
-  return collection === [] ? collection : assignDates(collection.dateData)
-}
-
-const futureDateColl = getAllDates()
+const futureDateColl = compileDates(dateData)
 
 exports.handler = async function (event, context) {
   return {
