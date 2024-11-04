@@ -1,5 +1,5 @@
-const { compileDates } = require('./helpers/utils.js')
-const { dateData } = require('./helpers/dates.js')
+import { compileDates } from './helpers/utils.js'
+import { dateData } from './helpers/dates.js'
 
 const futureDateColl = compileDates(dateData)
 

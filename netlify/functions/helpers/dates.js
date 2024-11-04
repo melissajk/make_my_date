@@ -1,4 +1,4 @@
-const dateData =  [
+export const dateData =  [
     {
       "brand": "365",
       "item": "Tortillas",
@@ -270,7 +270,3 @@ const dateData =  [
       "daysAmb": 7
     }
   ]
-
-  module.exports = {
-    dateData
-  }

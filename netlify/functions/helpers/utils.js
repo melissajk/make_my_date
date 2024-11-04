@@ -1,7 +1,7 @@
 
 const figureDate = (days) => {
   if (!days) {
-    return ""
+    return 'N/A'
   }
   const date = new Date()
   date.setDate(date.getDate() + days)
@@ -10,14 +10,10 @@ const figureDate = (days) => {
   return `${futureMonth + 1}/${futureDate}`
 }
 
-const compileDates = (dateData) => {
+export function compileDates(dateData) {
   dateData.forEach((product) => {
     product['futureDateRef'] = figureDate(product.daysRef)
     product['futureDateAmb'] = figureDate(product.daysAmb)
   })
   return dateData
-}
-
-module.exports = {
-  compileDates
 }

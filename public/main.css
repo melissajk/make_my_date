@@ -1,0 +1,7 @@
+@media screen and (min-width: 760px) and (max-width: 1170px) {
+   /* disable modal */
+}
+
+@media screen and (max-width: 768px) {
+  .secondary { display: none  }
+}

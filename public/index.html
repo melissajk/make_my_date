@@ -5,33 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
   <title>Make My Date</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-md">
-      <a class="navbar-brand" href="#">Make My Date</a>
+      <a class="navbar-brand fs-3" href="#">Make My Date</a>
     </div>
   </nav>
-  <div class="container pt-5" id="table_wrapper">
-    <table class="table table-hover mt-3">
-        <tr>
-          <th>Brand</th>
-          <th>Item</th>
-          <th>Refrigerate Until</th>
-          <th>Ambient Until</th>
-        </tr>
-    </table>
+  <div class="container" id="data_wrapper">
+    <div class="row mt-2 bg-success fs-3 text-white">
+      <div class="secondary col-md-4">Item</div>
+      <div class="secondary col-md-4">Refrigerate Until</div>
+      <div class="secondary col-md-4">Ambient Until</div>
+    </div>
+  </div>
+  <div class="modal fade" id="dateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="dataModalLabel"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="dateDataRef"></p>
+          <p id="dateDataAmb"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script id="data_row_template" type="text/x-handlebars">
     {{#each data}}
-    <tr>
-      <td>{{this.brand}}</td>
-      <td>{{this.item}}</td>
-      <td>{{this.futureDateRef}}</td>
-      <td>{{this.futureDateAmb}}</td>
-    </tr>
+    <div class="row py-2 fs-5" data-date-ref={{this.futureDateRef}} data-date-amb={{this.futureDateAmb}}>
+      <div class="col-md-4" data-bs-toggle="modal" data-bs-target="#dateModal" >{{this.brand}} {{this.item}}</div>
+      <div class="secondary col-md-4" id="fut_date_ref">{{this.futureDateRef}}</div>
+      <div class="secondary col-md-4" id="fut_date_amb">{{this.futureDateAmb}}</div>
+    </div>
     {{/each}}
   </script>
   <script type="module" src="script.js"></script>
